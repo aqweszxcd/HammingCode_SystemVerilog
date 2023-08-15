@@ -1,1 +1,0 @@
-# HammingCode_SystemVerilog
