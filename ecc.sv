@@ -55,9 +55,7 @@ always_comb begin
     integer dIdx = DWIDTH - 1;
     integer pIdx = `PWIDTH - 1;
     for(integer i=`PWIDTH+DWIDTH-1; i>=0; i=i-1)begin
-        if(i==(`PWIDTH+DWIDTH-1)) pIdx = pIdx - 1;
-        else if(i==0) pIdx = pIdx - 1;
-        else if(i==((1<<pIdx)-1)) pIdx = pIdx - 1;
+        if((i==(`PWIDTH+DWIDTH-1)) || (i==0) || (i==((1<<pIdx)-1))) pIdx = pIdx - 1;
         else begin
             doutNotFixed[dIdx] = din[i];
             doutFixed[dIdx] = (singleError && (errorIdx==i)) ? (~din[i]) : din[i];
